@@ -1,0 +1,6 @@
+<section>
+    <div *ngFor="let item of espacios">
+        <span *ngIf="item <= puntaje"><i class="material-icons">star</i></span>
+        <span *ngIf="item > puntaje"><i class="material-icons">star_outline</i></span>
+    </div>
+</section>

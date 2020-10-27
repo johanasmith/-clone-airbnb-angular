@@ -1,0 +1,27 @@
+<section>
+    <form class="form" [formGroup]="formGroup">
+        <div class="control-form">
+            <label>Nombre:</label>
+            <input formControlName= "nombre" type="text" name="nameText" maxlength="60"/>   
+        </div>
+        <span class="error">{{getErrorMessage('nombre')}}</span>
+        <div class="control-form">
+            <label>Telefono:</label>
+            <input formControlName="telefono" type="tel" name="PhoneText" minlength="10" maxlength="10"/>
+        </div>
+        <span class="error">{{getErrorMessage('telefono')}}</span>
+        <div class="control-form">
+            <label>Correo Electrónico:</label>
+            <input formControlName="correo" type="email" name="emailText" />
+        </div>
+        <span class="error">{{getErrorMessage('correo')}}</span>
+        <div class="control-form">
+            <label>Contraseña:</label>
+            <input formControlName="contrasenia" type="password" name="passwordText" />
+        </div>
+        <span class="error">{{getErrorMessage('contrasenia')}}</span>
+        <br/>
+        <br/>
+        <button (click)="register()" [disabled]="formGroup.invalid">Registrarme</button>
+    </form>
+</section>

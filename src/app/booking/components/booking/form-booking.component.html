@@ -1,0 +1,22 @@
+<section>
+    <form class="form" [formGroup]="formGroup">
+        <div class="control-form">
+            <label>Fecha de reserva Inicio:</label>
+            <input formControlName= "booking_date_start" type="date" name="dateInicialText" min="{{initialDate}}"/>   
+        </div>
+        <span class="error">{{getErrorMessage('booking_date_start')}}</span>
+        <div class="control-form">
+            <label>Fecha de reserva Fin:</label>
+            <input formControlName= "booking_date_end" type="date" name="dateFinalText" min="{{initialDate}}"/>   
+        </div>
+        <span class="error">{{getErrorMessage('booking_date_end')}}</span>
+        <div class="control-form">
+            <label>Comentarios:</label>
+            <input formControlName="comments" type="text" name="ComentarioText" maxlength="100"/>
+        </div>
+        <span class="error">{{getErrorMessage('comments')}}</span>
+        <br/>
+        <br/>
+        <button (click)="registerBooking()" [disabled]="formGroup.invalid">Registrar Reserva</button>
+    </form>
+</section>

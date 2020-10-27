@@ -1,0 +1,10 @@
+<a class="link" [routerLink]="['/detail/'+experience._id]">
+  <section>
+    <img [src]="experience.image" width="200">
+    <div>
+      <h3>{{experience.description}}</h3>
+      <h4>{{experience.place}}</h4>
+      <app-score [puntaje]="experience.score"></app-score>
+    </div>
+  </section>
+</a>

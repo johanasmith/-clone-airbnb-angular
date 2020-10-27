@@ -1,0 +1,17 @@
+@import '/src/styles/variables.scss';
+
+.card-detail {
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  margin: 0 20px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  p {
+    font-weight: 400;
+    color: $hof-color;
+    margin: 10px 15px;
+  }
+}
+

@@ -1,0 +1,13 @@
+@import '/src/styles/variables.scss';
+
+section {
+    display: flex;
+    margin: 10px 15px;
+}
+div{
+    flex-direction: row;
+}
+
+div i{
+    color: $babu-color;
+}

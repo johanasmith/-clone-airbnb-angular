@@ -1,0 +1,17 @@
+<section class="login-form">
+    <form class="form" [formGroup]="formGroup">
+        <div class="control-form">
+            <label>Correo Electrónico</label>
+            <input formControlName="correo" type="email" name="emailText" />   
+        </div>
+        <span class="error">{{getErrorMessage('correo')}}</span>
+        <div class="control-form">
+            <label>Contraseña:</label>
+            <input formControlName="contrasenia" type="password" name="passwordText" />
+        </div>
+        <span class="error">{{getErrorMessage('contrasenia')}}</span>
+        <br/>
+        <br/>
+        <button (click)="inicioSesion()" [disabled]="formGroup.invalid">Iniciar Sesión</button>
+    </form>    
+</section>
