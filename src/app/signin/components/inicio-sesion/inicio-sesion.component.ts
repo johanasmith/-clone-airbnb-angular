@@ -71,9 +71,8 @@ export class InicioSesionComponent implements OnInit {
 
   private saveToken(token: string) {
     if(token) {
-      localStorage.setItem("autenthicationToken", JSON.stringify(token));
+      localStorage.setItem("token", token);
     }
-    console.log('Token found: ', localStorage.getItem("autenthicationToken"));
- }
+  }
 
 }

@@ -14,6 +14,10 @@ import {  IUserAuthResponse } from './../../shared/models/user/userAuthResponse.
 export class UserService {
 
   constructor(private httpClient: HttpClient) { }
+  
+  public isLoggedUser(): boolean{
+     return localStorage.getItem('token') ? true: false;
+  }
 
   private handlerError(error: HttpErrorResponse){
     console.error ('Http erros', error);
