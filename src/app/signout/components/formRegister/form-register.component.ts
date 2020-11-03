@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { IUser } from 'src/app/shared/models/user/user.model';
 
@@ -15,7 +16,8 @@ export class FormRegisterComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -92,7 +94,8 @@ export class FormRegisterComponent implements OnInit {
   public register ():void{
     const data: IUser = this.formGroup.value;
     this.registerUser(data);
-    console.log('data registre', data);
+    alert('Usuario registrado');
+    this.route.navigate(['/home']);;
   }
 
   private registerUser(user: IUser) : void {

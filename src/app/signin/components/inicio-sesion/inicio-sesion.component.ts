@@ -4,9 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { IUser } from 'src/app/shared/models/user/user.model';
 
+
 @Component({
   selector: 'inicio-sesion',
-  templateUrl: './inicio-sesion.component.html',
+  templateUrl: './inicio-sesion.component.html', 
   styleUrls: ['./inicio-sesion.component.scss']
 })
 export class InicioSesionComponent implements OnInit {
@@ -64,6 +65,8 @@ export class InicioSesionComponent implements OnInit {
         if(response.status === 1){
           this.saveToken(response.token);
           this.router.navigate(['/home']);
+        }else{
+          this.router.navigate(['/signout']);
         }
       }
     )

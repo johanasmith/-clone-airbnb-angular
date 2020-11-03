@@ -2,7 +2,7 @@
     <form class="form" [formGroup]="formGroup">
         <div class="control-form">
             <label>Fecha de reserva Inicio:</label>
-            <input formControlName= "booking_date_start" type="date" name="dateInicialText" min="{{initialDate}}"/>   
+            <input formControlName="booking_date_start" type="date" name="dateInicialText" min="{{tomorrow()}}"/>   
         </div>
         <span class="error">{{getErrorMessage('booking_date_start')}}</span>
         <div class="control-form">

@@ -35,3 +35,25 @@ body {
         margin: 0;
     }
 }
+
+button{
+    width: 25%;
+    margin: 15px 0;
+    padding: 5px 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: $border-color;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: $arches-color;
+    color: #fff;
+    font-size: 1.1em;
+    opacity: 0.9;
+    outline:none;
+    cursor: pointer;
+    display: block;
+    &:disabled{
+        background-color: #ccc;
+        cursor:no-drop;
+    }
+}

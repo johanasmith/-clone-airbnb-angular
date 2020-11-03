@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBooking } from 'src/app/shared/models/booking/booking.model';
 import { BookingService } from 'src/app/services/booking/booking.service';
 
@@ -13,16 +13,16 @@ import { BookingService } from 'src/app/services/booking/booking.service';
 export class FormBookingComponent implements OnInit {
 
   public formGroup: FormGroup;
-  public initialDate: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private bookingService: BookingService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router
+  ) {     
+  }
 
-  ngOnInit(): void {
-    this.tomorrow();
+  ngOnInit(): void {    
     this.bookingInit();
   }
 
@@ -36,11 +36,18 @@ export class FormBookingComponent implements OnInit {
     });
   }
 
-  private tomorrow() {
+  tomorrow() {
     var today = new Date();
     today.setDate(today.getDate() + 1);
-    this.initialDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+    let todayDate = today.getDate();
+    let todayMonth = (today.getMonth()+1);
+    return  (today.getFullYear() 
+          + '-' 
+          + (todayMonth < 10 ? ("0" + todayMonth) : todayMonth) 
+          + '-' 
+          + (todayDate < 10 ? ("0" + todayDate) : todayDate));
   }
+  
 
   private validateDateRange(){
     return (formGroup: FormGroup) => {
@@ -58,6 +65,8 @@ export class FormBookingComponent implements OnInit {
       errorMessage += 'Campo Obligatorio. ';
     }if(errors.mustGreaterThan){
       errorMessage += 'La Fecha de Reserva Final debe ser mayor o igual que la Fecha de reserva Incial. ';
+    }if(errors.initialMustGreaterThan){
+      errorMessage += 'La Fecha de Reserva Inicial debe ser mayor a la fecha actual';
     }
 
     return errorMessage;
@@ -75,13 +84,15 @@ export class FormBookingComponent implements OnInit {
   public registerBooking ():void{
     const data: IBooking = this.formGroup.value;
     this.saveBooking(data);
-    console.log('Reserva exitosa', data);
+    alert('Reserva exitosa');
+    this.router.navigate(['/home']);
   }
 
   private saveBooking(booking: IBooking){
     this.route.params.subscribe(params => {
       const id= params.id;
       booking.experience_id= id;
+      booking.user_id = localStorage.getItem('token');
       this.bookingService.bookingRegister(booking).subscribe(
         response => {console.log('Reserva Registrada', response)
       });
